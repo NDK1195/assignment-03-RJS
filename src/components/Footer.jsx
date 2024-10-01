@@ -4,9 +4,9 @@ function Footer() {
       <div className="container mx-auto flex flex-col justify-between gap-6 px-6 py-[72px] tracking-wider sm:flex-row sm:items-center sm:gap-0 sm:px-0">
         {/* one column */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm text-white">CUSTOMER SERVICES</h3>
+          <h3 className="text-white">CUSTOMER SERVICES</h3>
 
-          <ul className="flex flex-col gap-1 text-xs text-gray-400 opacity-80">
+          <ul className="flex flex-col gap-1 text-sm text-gray-400 opacity-80">
             <li>
               <a href="">Help & Contact Us</a>
             </li>
@@ -25,9 +25,9 @@ function Footer() {
 
         {/* one column */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm text-white">COMPANY</h3>
+          <h3 className="text-white">COMPANY</h3>
 
-          <ul className="flex flex-col gap-1 text-xs text-gray-400 opacity-80">
+          <ul className="flex flex-col gap-1 text-sm text-gray-400 opacity-80">
             <li>
               <a href="">What We Do</a>
             </li>
@@ -46,9 +46,9 @@ function Footer() {
 
         {/* one column */}
         <div className="flex flex-col gap-4">
-          <h3 className="text-sm text-white">SOCIAL MEDIA</h3>
+          <h3 className="text-white">SOCIAL MEDIA</h3>
 
-          <ul className="flex flex-col gap-1 text-xs text-gray-400 opacity-80">
+          <ul className="flex flex-col gap-1 text-sm text-gray-400 opacity-80">
             <li>
               <a href="">Twitter</a>
             </li>

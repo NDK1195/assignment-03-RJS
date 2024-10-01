@@ -6,7 +6,9 @@ function Root() {
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <NavBar />
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

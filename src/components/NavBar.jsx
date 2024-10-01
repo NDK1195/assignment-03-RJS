@@ -4,7 +4,7 @@ function NavBar() {
   return (
     <header className="container mx-auto">
       <nav className="px-2 py-7 text-lg text-black">
-        <ul className="flex flex-col items-center gap-2 sm:flex-row sm:justify-between sm:gap-0">
+        <ul className="flex flex-col items-center gap-2 font-medium sm:flex-row sm:justify-between sm:gap-0">
           <div className="flex items-center gap-4">
             <li>
               <NavLink

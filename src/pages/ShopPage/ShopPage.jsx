@@ -1,4 +1,4 @@
 function ShopPage() {
-  return <div>ShopPage</div>;
+  return <div className="container mx-auto">ShopPage</div>;
 }
 export default ShopPage;

@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { HIDE_POPUP } from "../../../store/PopupSlice";
 import { AnimatePresence, motion } from "framer-motion";
+import Button from "../../../components/Button";
 
 function Popup() {
   const dispatch = useDispatch();
@@ -45,10 +46,14 @@ function Popup() {
                 <p className="tracking-wider text-gray-400 opacity-80">
                   {description}
                 </p>
-                <button className="button flex w-fit items-center gap-1 px-8 py-2">
+                <Button
+                  className="flex w-fit items-center gap-1 px-8 py-2"
+                  navigateTo={"/shop"}
+                  type="button"
+                >
                   <i className="fa-solid fa-cart-shopping"></i>
                   <span>View Details</span>
-                </button>
+                </Button>
               </div>
             </div>
           </motion.div>

@@ -1,3 +1,5 @@
+import Button from "../../../components/Button";
+
 function MoreInfo() {
   return (
     <section className="mb-16 mt-14">
@@ -39,7 +41,9 @@ function MoreInfo() {
             className="h-16 w-[420px] border border-gray-300 py-5 pl-4 outline-gray-300 placeholder:text-gray-300"
             placeholder="Enter your email address"
           />
-          <button className="button h-16 px-6">Subscribe</button>
+          <Button className="h-16 px-6" navigateTo="/" type="button">
+            Subscribe
+          </Button>
         </div>
       </div>
       {/* contact */}

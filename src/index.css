@@ -14,7 +14,3 @@
 .active {
   @apply text-active;
 }
-
-.button {
-  @apply bg-button tracking-wide text-gray-300 transition-colors hover:bg-[#535353];
-}

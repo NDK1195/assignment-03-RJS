@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import banner from "../../../assets/banner1.jpg";
+import Button from "../../../components/Button";
 
 function Banner() {
   return (
-    <section className="relative -z-10">
+    <section className="relative">
       <img src={banner} alt="banner" className="min-h-[150px]" />
 
       <div className="absolute left-16 top-1/2 max-w-[320px] -translate-y-1/2">
@@ -14,9 +15,13 @@ function Banner() {
           <h2 className="text-3xl tracking-wider lg:text-4xl">
             20% OFF ON NEW SEASON
           </h2>
-          <Link to={"/shop"} className="button w-fit px-6 py-2">
+          <Button
+            className="w-fit px-6 py-2"
+            navigateTo={"/shop"}
+            type="button"
+          >
             Browse collections
-          </Link>
+          </Button>
         </div>
       </div>
     </section>

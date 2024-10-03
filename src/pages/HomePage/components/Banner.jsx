@@ -3,7 +3,7 @@ import banner from "../../../assets/banner1.jpg";
 
 function Banner() {
   return (
-    <section className="relative">
+    <section className="relative -z-10">
       <img src={banner} alt="banner" className="min-h-[150px]" />
 
       <div className="absolute left-16 top-1/2 max-w-[320px] -translate-y-1/2">

@@ -27,7 +27,7 @@ function MoreInfo() {
       {/* contact */}
       <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
         <div>
-          <h2 className="text-xl tracking-widest">LET'S BE FRIENDS!</h2>
+          <h2 className="text-xl tracking-widest">LET&apos;S BE FRIENDS!</h2>
           <h3 className="text-sm tracking-wider text-gray-300">
             Nisi Nisi tempor consequat laboris nisi.
           </h3>

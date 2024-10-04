@@ -1,9 +1,11 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import product1 from "../../../assets/product_1.png";
 import product2 from "../../../assets/product_2.png";
 import product3 from "../../../assets/product_3.png";
 import product4 from "../../../assets/product_4.png";
 import product5 from "../../../assets/product_5.png";
+
 function Categories() {
   return (
     <section className="mt-14">
@@ -14,7 +16,12 @@ function Categories() {
         <h2 className="text-xl tracking-widest">BROWSE OUR CATEGORIES</h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 lg:gap-x-8 lg:gap-y-6">
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5 }}
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-6 lg:gap-x-8 lg:gap-y-6"
+      >
         <Link
           to={"/shop"}
           className="transition-opacity hover:opacity-70 lg:col-span-3"
@@ -45,7 +52,7 @@ function Categories() {
         >
           <img src={product5} alt="product 1" className="w-full" />
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <footer className="bg-black">
+    <footer className="mt-12 bg-black">
       <div className="container mx-auto flex flex-col justify-between gap-6 px-6 py-[72px] tracking-wider sm:flex-row sm:items-center sm:gap-0 sm:px-0">
         {/* one column */}
         <div className="flex flex-col gap-4">

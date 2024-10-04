@@ -9,6 +9,8 @@ function Root() {
   const data = useLoaderData();
   const dispatch = useDispatch();
 
+  console.log(data);
+
   useEffect(() => {
     dispatch(setProductList(data));
   }, []);

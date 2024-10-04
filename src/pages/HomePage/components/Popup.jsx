@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { HIDE_POPUP } from "../../../store/PopupSlice";
+import { HIDE_POPUP } from "../../../store/popupSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../../../components/Button";
 

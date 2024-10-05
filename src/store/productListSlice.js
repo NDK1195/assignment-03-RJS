@@ -5,7 +5,6 @@ const initialState = {
   category: "all",
   searchText: "",
   sortValue: "default",
-  sortedProducts: [],
 };
 const productListSlice = createSlice({
   name: "productList",
@@ -23,17 +22,9 @@ const productListSlice = createSlice({
     setSortValue(state, action) {
       state.sortValue = action.payload;
     },
-    setSortedProducts(state, action) {
-      state.sortedProducts = action.payload;
-    },
   },
 });
 
-export const {
-  setProductList,
-  setCategory,
-  setSearchText,
-  setSortValue,
-  setSortedProducts,
-} = productListSlice.actions;
+export const { setProductList, setCategory, setSearchText, setSortValue } =
+  productListSlice.actions;
 export default productListSlice.reducer;

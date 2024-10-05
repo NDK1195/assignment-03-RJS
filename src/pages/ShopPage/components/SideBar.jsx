@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import MenuItem from "./MenuItem";
 
 function SideBar() {
@@ -33,7 +32,7 @@ function SideBar() {
 
         {/* Other */}
         <li className="bg-background px-5 py-2 font-medium text-button">
-          IPHONE & MAC
+          OTHER
         </li>
         <MenuItem category="mouse">Mouse</MenuItem>
         <MenuItem category="keyboard">Keyboard</MenuItem>

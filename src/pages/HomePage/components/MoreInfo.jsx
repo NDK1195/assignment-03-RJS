@@ -4,7 +4,7 @@ function MoreInfo() {
   return (
     <section className="mb-16 mt-14">
       {/* service */}
-      <div className=" flex flex-col items-center justify-between gap-6 bg-background px-28 py-14 sm:flex-row">
+      <div className="mb-8 flex flex-col items-center justify-between gap-6 bg-background px-28 py-14 sm:flex-row">
         <div>
           <h3 className="text-lg tracking-widest">FREE SHIPPING</h3>
           <p className="text-sm tracking-wide text-gray-400">

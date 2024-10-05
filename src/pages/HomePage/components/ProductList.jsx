@@ -1,11 +1,25 @@
-import { useSelector } from "react-redux";
-import Product from "./Product";
+import { useDispatch, useSelector } from "react-redux";
+import { SHOW_POPUP } from "../../../store/popupSlice";
+import Product from "../../../components/Product";
 
 function ProductList() {
   const data = useSelector((state) => state.productList.productList);
+  const dispatch = useDispatch();
 
-  // get first 8 item from array data
+  // get first 8 product from array data
   const displayData = data.slice(0, 8);
+
+  function handleOpenPopup(product) {
+    dispatch(
+      SHOW_POPUP({
+        id: product["_id"]["$oid"],
+        imageUrl: product.img1,
+        name: product.name,
+        price: product.price,
+        description: product["short_desc"],
+      }),
+    );
+  }
 
   return (
     <section className="mt-14">
@@ -17,8 +31,13 @@ function ProductList() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-        {displayData.map((item) => (
-          <Product key={item["_id"]["$oid"]} item={item} />
+        {displayData.map((product) => (
+          <div
+            key={product["_id"]["$oid"]}
+            onClick={() => handleOpenPopup(product)}
+          >
+            <Product product={product} />
+          </div>
         ))}
       </div>
     </section>

@@ -2,17 +2,32 @@ import { useDispatch, useSelector } from "react-redux";
 import { HIDE_POPUP } from "../../../store/popupSlice";
 import { AnimatePresence, motion } from "framer-motion";
 import Button from "../../../components/Button";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 function Popup() {
   const dispatch = useDispatch();
-  const isShow = useSelector((state) => state.popup.isShow);
-  const { image, name, price, description } = useSelector(
-    (state) => state.popup.data,
-  );
+  const location = useLocation();
+  const isOpen = useSelector((state) => state.popup.isShow);
+  const {
+    id,
+    imageUrl,
+    name,
+    price: originalPrice,
+    description,
+  } = useSelector((state) => state.popup.data);
+
+  // hide popup when route changes
+  useEffect(() => {
+    dispatch(HIDE_POPUP());
+  }, [location.pathname, dispatch]);
+
+  // format price
+  const price = new Intl.NumberFormat("vi-VN").format(originalPrice);
 
   return (
     <AnimatePresence>
-      {isShow && (
+      {isOpen && (
         <>
           {/* backdrop */}
           <div
@@ -31,7 +46,7 @@ function Popup() {
           >
             <div className="flex flex-col gap-8 xl:flex-row">
               <div className="basis-1/2">
-                <img src={image} alt={name} className="w-full" />
+                <img src={imageUrl} alt={name} className="w-full" />
               </div>
 
               <div className="flex basis-1/2 flex-col gap-3">
@@ -48,7 +63,7 @@ function Popup() {
                 </p>
                 <Button
                   className="flex w-fit items-center gap-1 px-8 py-2"
-                  navigateTo={"/shop"}
+                  navigateTo={`/detail/${id}`}
                   type="button"
                 >
                   <i className="fa-solid fa-cart-shopping"></i>

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isShow: false,
   data: {
+    id: "",
     image: "",
     name: "",
     price: "",

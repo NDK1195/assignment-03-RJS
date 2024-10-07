@@ -9,8 +9,6 @@ function Root() {
   const data = useLoaderData();
   const dispatch = useDispatch();
 
-  console.log(data);
-
   useEffect(() => {
     dispatch(setProductList(data));
   }, []);
@@ -18,7 +16,7 @@ function Root() {
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <NavBar />
-      <main>
+      <main className="container mx-auto">
         <Outlet />
       </main>
       <Footer />

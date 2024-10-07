@@ -36,7 +36,7 @@ function ProductList() {
             key={product["_id"]["$oid"]}
             onClick={() => handleOpenPopup(product)}
           >
-            <Product product={product} />
+            <Product product={product} isHavePopup={true} />
           </div>
         ))}
       </div>

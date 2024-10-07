@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-function Button({ children, className, navigateTo, type }) {
+function Button({ children, className, navigateTo, type = "button" }) {
   const navigate = useNavigate();
   return (
     <button

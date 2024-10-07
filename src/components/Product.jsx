@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-function Product({ product, isHavePopup = true }) {
+function Product({ product, isHavePopup = false }) {
   const navigate = useNavigate();
+  const pathname = useLocation();
+
   // format price
   const price = new Intl.NumberFormat("vi-VN").format(product.price);
 
@@ -10,6 +13,15 @@ function Product({ product, isHavePopup = true }) {
   if (!isHavePopup) {
     navigateTo = `/detail/${product["_id"]["$oid"]}`;
   }
+
+  // scroll to top when change route if don't have popup
+  useEffect(() => {
+    if (!isHavePopup) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    return;
+  }, [pathname]);
 
   return (
     <motion.div

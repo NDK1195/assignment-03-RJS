@@ -6,13 +6,13 @@ import ProductList from "./components/ProductList";
 
 function HomePage() {
   return (
-    <div className="container mx-auto">
+    <>
       <Popup />
       <Banner />
       <Categories />
       <ProductList />
       <MoreInfo />
-    </div>
+    </>
   );
 }
 export default HomePage;

@@ -28,11 +28,7 @@ function ProductList() {
   const productsToDisplay = (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {sortedProducts.map((product) => (
-        <Product
-          key={product["_id"]["$oid"]}
-          product={product}
-          isHavePopup={false}
-        />
+        <Product key={product["_id"]["$oid"]} product={product} />
       ))}
     </div>
   );

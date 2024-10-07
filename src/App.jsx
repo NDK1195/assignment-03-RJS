@@ -41,6 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/detail/:productId",
         element: <DetailPage />,
+        loader: loader,
       },
       {
         path: "/cart",

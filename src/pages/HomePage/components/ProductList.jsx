@@ -1,13 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
-import { SHOW_POPUP } from "../../../store/popupSlice";
+import { useDispatch } from "react-redux";
 import Product from "../../../components/Product";
+import { SHOW_POPUP } from "../../../store/popupSlice";
 
 function ProductList() {
-  const data = useSelector((state) => state.productList.productList);
+  const productList = JSON.parse(localStorage.getItem("products"));
   const dispatch = useDispatch();
 
   // get first 8 product from array data
-  const displayData = data.slice(0, 8);
+  const displayData = productList.slice(0, 8);
 
   function handleOpenPopup(product) {
     dispatch(

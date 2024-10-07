@@ -1,17 +1,12 @@
-import { Outlet, useLoaderData } from "react-router-dom";
-import NavBar from "../components/NavBar";
-import Footer from "../components/Footer";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setProductList } from "../store/productListSlice";
+import { Outlet, useLoaderData } from "react-router-dom";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 function Root() {
   const data = useLoaderData();
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setProductList(data));
-  }, []);
+  localStorage.setItem("products", JSON.stringify(data));
 
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">

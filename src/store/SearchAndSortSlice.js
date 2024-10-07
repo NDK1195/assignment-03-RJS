@@ -1,18 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  productList: [],
   category: "all",
   searchText: "",
   sortValue: "default",
 };
-const productListSlice = createSlice({
-  name: "productList",
+const SearchAndSortSlice = createSlice({
+  name: "SearchAndSort",
   initialState,
   reducers: {
-    setProductList(state, action) {
-      state.productList = action.payload;
-    },
     setCategory(state, action) {
       state.category = action.payload;
     },
@@ -25,6 +21,6 @@ const productListSlice = createSlice({
   },
 });
 
-export const { setProductList, setCategory, setSearchText, setSortValue } =
-  productListSlice.actions;
-export default productListSlice.reducer;
+export const { setCategory, setSearchText, setSortValue } =
+  SearchAndSortSlice.actions;
+export default SearchAndSortSlice.reducer;

@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Outlet, useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";

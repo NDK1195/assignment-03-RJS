@@ -5,8 +5,8 @@ const initialState = {
   searchText: "",
   sortValue: "default",
 };
-const SearchAndSortSlice = createSlice({
-  name: "SearchAndSort",
+const searchAndSortSlice = createSlice({
+  name: "searchAndSort",
   initialState,
   reducers: {
     setCategory(state, action) {
@@ -22,5 +22,5 @@ const SearchAndSortSlice = createSlice({
 });
 
 export const { setCategory, setSearchText, setSortValue } =
-  SearchAndSortSlice.actions;
-export default SearchAndSortSlice.reducer;
+  searchAndSortSlice.actions;
+export default searchAndSortSlice.reducer;

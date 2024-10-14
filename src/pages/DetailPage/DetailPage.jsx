@@ -4,10 +4,11 @@ import Description from "./components/Description";
 import ProductImages from "./components/ProductImages";
 import ProductInfo from "./components/ProductInfo";
 import RelatedProducts from "./components/RelatedProducts";
+import { useSelector } from "react-redux";
 
 function DetailPage() {
   const { productId } = useParams();
-  const productList = JSON.parse(localStorage.getItem("products"));
+  const productList = useSelector((state) => state.productList.productList);
 
   const product = productList.find(
     (product) => product["_id"]["$oid"] === productId,

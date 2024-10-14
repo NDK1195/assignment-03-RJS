@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../../../store/SearchAndSortSlice";
+import { setCategory } from "../../../store/searchAndSortSlice";
 
 function MenuItem({ children, category }) {
-  const currentCategory = useSelector((state) => state.SearchAndSort.category);
+  const currentCategory = useSelector((state) => state.searchAndSort.category);
   const dispatch = useDispatch();
 
   return (

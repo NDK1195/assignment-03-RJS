@@ -5,10 +5,10 @@ import SearchInput from "./SearchInput";
 import Pagination from "./Pagination";
 
 function ProductList() {
-  const productList = JSON.parse(localStorage.getItem("products"));
-  const selectedCategory = useSelector((state) => state.SearchAndSort.category);
-  const searchText = useSelector((state) => state.SearchAndSort.searchText);
-  const sortValue = useSelector((state) => state.SearchAndSort.sortValue);
+  const productList = useSelector((state) => state.productList.productList);
+  const selectedCategory = useSelector((state) => state.searchAndSort.category);
+  const searchText = useSelector((state) => state.searchAndSort.searchText);
+  const sortValue = useSelector((state) => state.searchAndSort.sortValue);
 
   const productsToShow = productList.filter(
     (product) =>

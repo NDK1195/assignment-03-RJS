@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setSearchText } from "../../../store/SearchAndSortSlice";
+import { setSearchText } from "../../../store/searchAndSortSlice";
 function SearchInput() {
   const dispatch = useDispatch();
 

@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { setSortValue } from "../../../store/SearchAndSortSlice";
+import { setSortValue } from "../../../store/searchAndSortSlice";
 function SortSelect() {
   const dispatch = useDispatch();
   return (

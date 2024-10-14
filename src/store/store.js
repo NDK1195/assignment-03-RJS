@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import SearchAndSortSlice from "./SearchAndSortSlice";
-import PopupSlice from "./popupSlice";
+import searchAndSortSlice from "./searchAndSortSlice";
+import popupSlice from "./popupSlice";
+import productListSlice from "./productListSlice";
 
 export const store = configureStore({
   reducer: {
-    SearchAndSort: SearchAndSortSlice,
-    popup: PopupSlice,
+    searchAndSort: searchAndSortSlice,
+    popup: popupSlice,
+    productList: productListSlice,
   },
 });

@@ -5,8 +5,8 @@ import Error from "./pages/Error";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import CartPage from "./pages/CartPage/CartPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginAndRegister/LoginPage";
+import RegisterPage from "./pages/LoginAndRegister/RegisterPage";
 import Root from "./pages/Root";
 
 async function loader() {

@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button";
-import { useState } from "react";
+import Input from "./components/Input";
+import Wrapper from "./components/Wrapper";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 function RegisterPage() {
+  const userArr = JSON.parse(localStorage.getItem("userArr"));
+
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({
     fullName: "",
@@ -12,8 +16,6 @@ function RegisterPage() {
     phone: "",
   });
 
-  const [isFormValid, setIsFormValid] = useState(true);
-
   const [user, setUser] = useState({
     fullName: "",
     email: "",
@@ -21,7 +23,12 @@ function RegisterPage() {
     phone: "",
   });
 
-  const handleValidation = (event) => {
+  /**
+   * Handles the validation of the form input values. If the value is empty, an
+   * error message is set for the corresponding field. If the value is valid, the
+   * error message is cleared and the field is updated in the user object.
+   */
+  function handleValidation(event) {
     const { name, value } = event.target;
 
     switch (name) {
@@ -31,82 +38,80 @@ function RegisterPage() {
             ...prevState,
             fullName: "Please enter your full name",
           }));
-          setIsFormValid(false);
         } else {
           setFormErrors((prevState) => ({
             ...prevState,
             fullName: "",
           }));
-          setIsFormValid(true);
           setUser((prevState) => ({
             ...prevState,
             [name]: value,
           }));
         }
         break;
+
       case "email":
         if (value === "") {
           setFormErrors((prevState) => ({
             ...prevState,
             email: "Please enter your email",
           }));
-          setIsFormValid(false);
         } else if (!emailRegex.test(value)) {
           setFormErrors((prevState) => ({
             ...prevState,
             email: "Please enter a valid email",
           }));
-          setIsFormValid(false);
+        } else if (userArr.some((user) => user.email === value)) {
+          setFormErrors((prevState) => ({
+            ...prevState,
+            email: "Email already exists",
+          }));
         } else {
           setFormErrors((prevState) => ({
             ...prevState,
             email: "",
           }));
-          setIsFormValid(true);
           setUser((prevState) => ({
             ...prevState,
             [name]: value,
           }));
         }
         break;
+
       case "password":
         if (value === "") {
           setFormErrors((prevState) => ({
             ...prevState,
             password: "Please enter your password",
           }));
-          setIsFormValid(false);
         } else if (value.length < 9) {
           setFormErrors((prevState) => ({
             ...prevState,
             password: "Password must be at least 9 characters",
           }));
-          setIsFormValid(false);
         } else {
           setFormErrors((prevState) => ({
             ...prevState,
             password: "",
           }));
-          setIsFormValid(true);
           setUser((prevState) => ({
             ...prevState,
             [name]: value,
           }));
         }
         break;
+
       case "phone":
         if (value === "") {
           setFormErrors((prevState) => ({
             ...prevState,
             phone: "Please enter your phone number",
           }));
-          setIsFormValid(false);
         } else {
           setFormErrors((prevState) => ({
             ...prevState,
             phone: "",
           }));
-          setIsFormValid(true);
           setUser((prevState) => ({
             ...prevState,
             [name]: value,
@@ -114,90 +119,103 @@ function RegisterPage() {
         }
         break;
     }
-  };
+  }
 
-  const handleSignUp = (event) => {
+  // reset error state when focus on input
+  function handleFocus(event) {
+    const { name } = event.target;
+
+    switch (name) {
+      case "fullName":
+        setFormErrors((prevState) => ({
+          ...prevState,
+          fullName: "",
+        }));
+        break;
+
+      case "email":
+        setFormErrors((prevState) => ({
+          ...prevState,
+          email: "",
+        }));
+        break;
+
+      case "password":
+        setFormErrors((prevState) => ({
+          ...prevState,
+          password: "",
+        }));
+        break;
+
+      case "phone":
+        setFormErrors((prevState) => ({
+          ...prevState,
+          phone: "",
+        }));
+        break;
+    }
+  }
+
+  function handleSignUp(event) {
     event.preventDefault();
 
-    if (isFormValid) {
+    // If all the form errors are empty, it means the form is valid
+    if (Object.values(formErrors).every((value) => value === "")) {
       const userArr = JSON.parse(localStorage.getItem("userArr"));
 
+      // Add the new user to the existing array of users
       localStorage.setItem("userArr", JSON.stringify([...userArr, user]));
       navigate("/login");
     }
-  };
+  }
 
   return (
-    <div className="bg-banner relative min-h-dvh bg-contain bg-repeat-y">
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-        <form
-          className="min-w-[500px] rounded-md bg-white px-14 py-16 shadow-md"
-          onSubmit={handleSignUp}
-        >
-          <h3 className="mb-20 text-center text-2xl text-black">Sign Up</h3>
+    <Wrapper>
+      <h3 className="mb-20 text-center text-2xl text-black">Sign Up</h3>
 
-          <input
-            type="text"
-            className="w-full border-[0.5px] px-4 py-5 text-sm outline-none"
-            name="fullName"
-            placeholder="Full Name"
-            onBlur={handleValidation}
-          />
-          <p
-            className={`my-1 ml-4 text-sm text-red-400 ${formErrors.fullName ? "block" : "hidden"}`}
-          >
-            {formErrors.fullName}
-          </p>
-          <input
-            type="text"
-            className="w-full border-[0.5px] px-4 py-5 text-sm outline-none"
-            name="email"
-            placeholder="Email"
-            onBlur={handleValidation}
-          />
-          <p
-            className={`my-1 ml-4 text-sm text-red-500 ${formErrors.email ? "block" : "hidden"}`}
-          >
-            {formErrors.email}
-          </p>
-          <input
-            type="password"
-            className="w-full border-[0.5px] px-4 py-5 text-sm outline-none"
-            name="password"
-            placeholder="Password"
-            onBlur={handleValidation}
-          />
-          <p
-            className={`my-1 ml-4 text-sm text-red-500 ${formErrors.password ? "block" : "hidden"}`}
-          >
-            {formErrors.password}
-          </p>
-          <input
-            type="text"
-            className="w-full border-[0.5px] px-4 py-5 text-sm outline-none"
-            name="phone"
-            placeholder="Phone"
-            onBlur={handleValidation}
-          />
-          <p
-            className={`my-1 ml-4 text-sm text-red-500 ${formErrors.phone ? "block" : "hidden"}`}
-          >
-            {formErrors.phone}
-          </p>
+      <form onSubmit={handleSignUp}>
+        <Input
+          name="fullName"
+          placeholder="Full Name"
+          error={formErrors.fullName}
+          onBlur={handleValidation}
+          onFocus={handleFocus}
+        />
+        <Input
+          name="email"
+          placeholder="Email"
+          error={formErrors.email}
+          onBlur={handleValidation}
+          onFocus={handleFocus}
+        />
+        <Input
+          name="password"
+          placeholder="Password"
+          type="password"
+          error={formErrors.password}
+          onBlur={handleValidation}
+          onFocus={handleFocus}
+        />
+        <Input
+          name="phone"
+          placeholder="Phone"
+          error={formErrors.phone}
+          onBlur={handleValidation}
+          onFocus={handleFocus}
+        />
 
-          <Button className="mb-11 mt-5 w-full py-5" type="submit">
-            SIGN UP
-          </Button>
+        <Button className="mb-11 mt-5 w-full py-5" type="submit">
+          SIGN UP
+        </Button>
+      </form>
 
-          <div className="text-center text-sm text-gray-400">
-            Login?{" "}
-            <Link to="/login" className="text-blue-300">
-              Click
-            </Link>
-          </div>
-        </form>
+      <div className="text-center text-sm text-gray-400">
+        Login?{" "}
+        <Link to="/login" className="text-blue-300">
+          Click
+        </Link>
       </div>
-    </div>
+    </Wrapper>
   );
 }
 export default RegisterPage;

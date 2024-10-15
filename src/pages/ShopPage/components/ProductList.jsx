@@ -10,13 +10,13 @@ function ProductList() {
   const searchText = useSelector((state) => state.searchAndSort.searchText);
   const sortValue = useSelector((state) => state.searchAndSort.sortValue);
 
-  const productsToShow = productList.filter(
+  const filteredProducts = productList.filter(
     (product) =>
       (selectedCategory === "all" || product.category === selectedCategory) &&
       product.name.toLowerCase().includes(searchText.toLowerCase()),
   );
 
-  const sortedProducts = [...productsToShow].sort((a, b) => {
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortValue === "ascending") {
       return Number(a.price) - Number(b.price);
     } else if (sortValue === "descending") {

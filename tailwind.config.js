@@ -8,6 +8,9 @@ export default {
         background: "#f4f5f9",
         active: "#e2b23a",
       },
+      backgroundImage: {
+        banner: 'url("assets/banner1.jpg")',
+      },
     },
   },
   plugins: [],

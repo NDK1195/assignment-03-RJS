@@ -11,6 +11,11 @@ function Root() {
 
   useEffect(() => {
     dispatch(setProductList(data));
+
+    const userArr = JSON.parse(localStorage.getItem("userArr"));
+    if (!userArr) {
+      localStorage.setItem("userArr", JSON.stringify([]));
+    }
   }, []);
 
   return (

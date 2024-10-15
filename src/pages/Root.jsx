@@ -1,13 +1,20 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Outlet, useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { ON_LOGIN } from "../store/authenticationSlice";
 import { setProductList } from "../store/productListSlice";
 
 function Root() {
   const data = useLoaderData();
   const dispatch = useDispatch();
+
+  const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
+
+  if (currentLoginUser) {
+    dispatch(ON_LOGIN());
+  }
 
   useEffect(() => {
     dispatch(setProductList(data));

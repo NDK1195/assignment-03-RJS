@@ -1,13 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ShopPage from "./pages/ShopPage/ShopPage";
-import HomePage from "./pages/HomePage/HomePage";
-import Error from "./pages/Error";
-import DetailPage from "./pages/DetailPage/DetailPage";
 import CartPage from "./pages/CartPage/CartPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import DetailPage from "./pages/DetailPage/DetailPage";
+import Error from "./pages/Error";
+import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginAndRegister/LoginPage";
 import RegisterPage from "./pages/LoginAndRegister/RegisterPage";
 import Root from "./pages/Root";
+import ShopPage from "./pages/ShopPage/ShopPage";
 
 async function loader() {
   try {
@@ -22,7 +22,7 @@ async function loader() {
     console.log(error);
   }
 }
-loader();
+
 const router = createBrowserRouter([
   {
     path: "/",

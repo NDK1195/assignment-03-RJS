@@ -87,7 +87,9 @@ function LoginPage() {
     }
   }
 
-  function handleSignIn() {
+  function handleSignIn(e) {
+    e.preventDefault();
+
     const foundUser = userArr.find(
       (user) =>
         user.email === currentUser.email &&
@@ -95,10 +97,14 @@ function LoginPage() {
     );
 
     if (foundUser) {
-      localStorage.setItem("currentUser", JSON.stringify(foundUser));
+      localStorage.setItem("currentLoginUser", JSON.stringify(foundUser));
       navigate("/");
     } else {
       alert("Invalid email or password");
+      setCurrentUser({
+        email: "",
+        password: "",
+      });
     }
   }
 

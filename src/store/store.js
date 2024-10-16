@@ -3,6 +3,7 @@ import searchAndSortSlice from "./searchAndSortSlice";
 import popupSlice from "./popupSlice";
 import productListSlice from "./productListSlice";
 import authenticationSlice from "./authenticationSlice";
+import cartSlice from "./cartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     popup: popupSlice,
     productList: productListSlice,
     authentication: authenticationSlice,
+    cart: cartSlice,
   },
 });

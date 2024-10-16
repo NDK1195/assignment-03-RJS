@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ON_LOGOUT } from "../store/authenticationSlice";
 
 function NavBar() {
   const isLogin = useSelector((state) => state.authentication.isLogin);
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("currentLoginUser");
     dispatch(ON_LOGOUT());
+    navigate("/login");
   }
 
   return (

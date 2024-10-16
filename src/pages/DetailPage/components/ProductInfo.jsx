@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Button from "../../../components/Button";
+import AddToCart from "./AddToCart";
 
 function ProductInfo({ product }) {
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(1);
 
   function handleDecreaseQuantity() {
     if (quantity <= 1) {
@@ -61,9 +61,7 @@ function ProductInfo({ product }) {
             </span>
           </div>
         </div>
-        <Button className="min-w-[125px] px-6 py-2 text-sm italic">
-          Add to cart
-        </Button>
+        <AddToCart product={product} quantity={quantity} />
       </div>
     </div>
   );

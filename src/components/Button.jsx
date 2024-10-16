@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
 
-function Button({ children, className, navigateTo, type = "button" }) {
+function Button({ children, className, navigateTo, type = "button", onClick }) {
   const navigate = useNavigate();
+
+  function handleClick() {
+    if (onClick) {
+      onClick();
+    }
+    navigate(navigateTo);
+  }
   return (
     <button
       type={type}
       className={`bg-button tracking-wide text-gray-300 transition-colors hover:bg-[#535353] ${className}`}
-      onClick={() => navigate(navigateTo)}
+      onClick={handleClick}
     >
       {children}
     </button>

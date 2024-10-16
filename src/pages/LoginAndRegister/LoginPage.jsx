@@ -35,10 +35,6 @@ function LoginPage() {
             email: "Please enter a valid email",
           }));
         } else {
-          setFormErrors((prevState) => ({
-            ...prevState,
-            email: "",
-          }));
           setCurrentUser((prevState) => ({
             ...prevState,
             [name]: value,
@@ -53,10 +49,6 @@ function LoginPage() {
             password: "Please enter your password",
           }));
         } else {
-          setFormErrors((prevState) => ({
-            ...prevState,
-            password: "",
-          }));
           setCurrentUser((prevState) => ({
             ...prevState,
             [name]: value,

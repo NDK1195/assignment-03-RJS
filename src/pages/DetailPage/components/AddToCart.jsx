@@ -1,13 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import { ADD_CART } from "../../../store/cartSlice";
-import { useNavigate } from "react-router-dom";
 
 function AddToCart({ product, quantity }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cart = useSelector((state) => state.cart.cart);
-  const totcalCartPrice = useSelector((state) => state.cart.totalCartPrice);
 
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
 
@@ -18,22 +16,13 @@ function AddToCart({ product, quantity }) {
     }
 
     const productToAdd = {
-      ...product,
+      product,
       quantity,
-      totalPrice: Number(product.price) * quantity,
+      userEmail: currentLoginUser.email,
     };
+
     dispatch(ADD_CART(productToAdd));
-
-    //     JSON.stringify(
-    //       localStorage.setItem(
-    //         "currentLoginUser",
-    //         JSON.stringify({ ...currentLoginUser, cart: [...cart, productToAdd] }),
-    //       ),
-    //     );
   }
-
-  console.log(cart);
-  console.log(totcalCartPrice);
 
   return (
     <Button

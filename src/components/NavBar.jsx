@@ -1,12 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ON_LOGOUT } from "../store/authenticationSlice";
+import { useMemo } from "react";
 
 function NavBar() {
   const isLogin = useSelector((state) => state.authentication.isLogin);
+  const cart = useSelector((state) => state.cart.cart);
+
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  let totalQuantity;
+  if (currentLoginUser) {
+    totalQuantity = cart[currentLoginUser.email].reduce(
+      (total, item) => total + item.quantity,
+      0,
+    );
+  }
 
   function handleLogout() {
     localStorage.removeItem("currentLoginUser");
@@ -42,7 +54,14 @@ function NavBar() {
           </Link>
 
           <div className="flex items-center gap-4">
-            <li className="flex items-center gap-1">
+            <li className="relative flex items-center gap-1">
+              {/* cart quantity */}
+              {isLogin && (
+                <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                  {totalQuantity}
+                </span>
+              )}
+              {/* cart quantity */}
               <i className="fa-solid fa-cart-flatbed text-gray-400"></i>
               <NavLink
                 to={"/cart"}

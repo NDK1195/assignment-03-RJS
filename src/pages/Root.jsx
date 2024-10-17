@@ -20,17 +20,11 @@ function Root() {
     dispatch(setProductList(data));
 
     const userArr = JSON.parse(localStorage.getItem("userArr"));
-    const cart = JSON.parse(localStorage.getItem("cart"));
-
     // Set user array to local storage if it doesn't exist
     if (!userArr) {
       localStorage.setItem("userArr", JSON.stringify([]));
     }
-    // Set cart to local storage if it doesn't exist
-    if (!cart) {
-      localStorage.setItem("cart", JSON.stringify([]));
-    }
-  }, [currentLoginUser]);
+  }, []);
 
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">

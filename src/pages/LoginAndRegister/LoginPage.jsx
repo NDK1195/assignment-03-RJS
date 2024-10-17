@@ -3,10 +3,13 @@ import Wrapper from "./components/Wrapper";
 import Input from "./components/Input";
 import Button from "../../components/Button";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ON_LOGIN } from "../../store/authenticationSlice";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 function LoginPage() {
   const userArr = JSON.parse(localStorage.getItem("userArr"));
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({
@@ -90,6 +93,7 @@ function LoginPage() {
 
     if (foundUser) {
       localStorage.setItem("currentLoginUser", JSON.stringify(foundUser));
+      dispatch(ON_LOGIN());
       navigate("/");
     } else {
       alert("Invalid email or password");

@@ -54,19 +54,19 @@ function NavBar() {
           </Link>
 
           <div className="flex items-center gap-4">
-            <li className="relative flex items-center gap-1">
-              {/* cart quantity */}
-              {isLogin && (
-                <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                  {totalQuantity}
-                </span>
-              )}
-              {/* cart quantity */}
-              <i className="fa-solid fa-cart-flatbed text-gray-400"></i>
+            <li className="relative">
               <NavLink
                 to={"/cart"}
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
+                {/* cart quantity */}
+                {isLogin && (
+                  <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                    {totalQuantity}
+                  </span>
+                )}
+                {/* cart quantity */}
+                <i className="fa-solid fa-cart-flatbed mr-1 text-gray-400"></i>
                 Cart
               </NavLink>
             </li>

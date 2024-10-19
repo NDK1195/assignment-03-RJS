@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { ON_LOGOUT } from "../store/authenticationSlice";
-import { useMemo } from "react";
 
 function NavBar() {
   const isLogin = useSelector((state) => state.authentication.isLogin);
@@ -13,7 +12,7 @@ function NavBar() {
   const navigate = useNavigate();
 
   let totalQuantity;
-  if (currentLoginUser) {
+  if (currentLoginUser && cart[currentLoginUser.email]) {
     totalQuantity = cart[currentLoginUser.email].reduce(
       (total, item) => total + item.quantity,
       0,
@@ -60,7 +59,7 @@ function NavBar() {
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {/* cart quantity */}
-                {isLogin && (
+                {cart[currentLoginUser.email] && (
                   <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                     {totalQuantity}
                   </span>

@@ -4,22 +4,25 @@ import CartTotal from "./components/CartTotal";
 import Navigation from "./components/Navigation";
 import ProductCard from "./components/ProductCard";
 import Header from "./components/Header";
+import Wrapper from "./components/Wrapper";
 
 function CartPage() {
   const cart = useSelector((state) => state.cart.cart);
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
-  console.log(cart);
-  const subTotalPrice = cart[currentLoginUser.email].reduce(
-    (acc, product) => acc + product.price * product.quantity,
-    0,
-  );
+
+  const subTotalPrice =
+    cart[currentLoginUser.email] &&
+    cart[currentLoginUser.email].reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0,
+    );
   return (
     <>
       <Banner name="cart" />
 
       <h2 className="mb-8 text-xl tracking-widest">SHOPPING CART</h2>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-2">
+      <Wrapper>
         <div className="col-span-2 row-span-2 tracking-wide">
           <Header />
 
@@ -34,13 +37,13 @@ function CartPage() {
               ))}
           </div>
 
-          <Navigation />
+          <Navigation canCheckout={cart[currentLoginUser.email]} />
         </div>
 
         <div className="row-span-1 bg-background px-10 py-11">
           <CartTotal subTotalPrice={subTotalPrice} />
         </div>
-      </div>
+      </Wrapper>
     </>
   );
 }

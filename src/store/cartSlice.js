@@ -14,7 +14,6 @@ const cartSlice = createSlice({
   reducers: {
     ADD_CART: (state, action) => {
       const { userEmail, product, quantity } = action.payload;
-      console.log(action.payload);
 
       if (!state.cart[userEmail]) {
         state.cart[userEmail] = [];
@@ -60,9 +59,18 @@ const cartSlice = createSlice({
       );
       localStorage.setItem("cartList", JSON.stringify(state.cart));
     },
+    RESET_CART: (state) => {
+      state.cart = {};
+      localStorage.setItem("cartList", JSON.stringify(state.cart));
+    },
   },
 });
 
-export const { ADD_CART, INCREASE_QUANTITY, DECREASE_QUANTITY, REMOVE_ITEM } =
-  cartSlice.actions;
+export const {
+  ADD_CART,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
+  REMOVE_ITEM,
+  RESET_CART,
+} = cartSlice.actions;
 export default cartSlice.reducer;

@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { ON_LOGIN } from "../store/authenticationSlice";
 import { setProductList } from "../store/productListSlice";
+import Chat from "./Chat/Chat";
 
 function Root() {
   const data = useLoaderData();
@@ -28,6 +29,7 @@ function Root() {
 
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
+      <Chat />
       <NavBar />
       <main className="container mx-auto">
         <Outlet />

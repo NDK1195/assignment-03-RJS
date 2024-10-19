@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Button from "../../../components/Button";
-import { sub } from "framer-motion/client";
 
 function CartTotal({ subTotalPrice }) {
   const [discountValue, setDiscountValue] = useState(0);
@@ -22,10 +21,14 @@ function CartTotal({ subTotalPrice }) {
   return (
     <>
       <h3 className="mb-7 text-xl tracking-widest">CART TOTAL</h3>
+
       <div className="mb-2 flex items-center justify-between">
         <h4 className="tracking-wide">SUBTOTAL</h4>
         <p className="text-sm text-gray-400">
-          {new Intl.NumberFormat("vi-VN").format(subTotalPrice)} VND
+          {subTotalPrice
+            ? new Intl.NumberFormat("vi-VN").format(subTotalPrice)
+            : 0}{" "}
+          VND
         </p>
       </div>
       <hr className="h-[1px] w-full" />
@@ -38,7 +41,11 @@ function CartTotal({ subTotalPrice }) {
       <div className="mb-5 flex items-center justify-between">
         <h4 className="tracking-wide">TOTAL</h4>
         <p className="text-sm text-gray-400">
-          {new Intl.NumberFormat("vi-VN").format(subTotalPrice - discountValue)}{" "}
+          {subTotalPrice
+            ? new Intl.NumberFormat("vi-VN").format(
+                subTotalPrice - discountValue,
+              )
+            : 0}{" "}
           VND
         </p>
       </div>

@@ -5,13 +5,11 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { ON_LOGIN } from "../store/authenticationSlice";
 import Chat from "./Chat/Chat";
+import { setProductList } from "../store/productListSlice";
 
 function Root() {
   const data = useLoaderData();
   const dispatch = useDispatch();
-
-  // save data to local storage
-  localStorage.setItem("productList", JSON.stringify(data));
 
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
 
@@ -19,6 +17,9 @@ function Root() {
     if (currentLoginUser) {
       dispatch(ON_LOGIN());
     }
+    // save data to local storage and state
+    dispatch(setProductList(data));
+    localStorage.setItem("productList", JSON.stringify(data));
   }, []);
 
   return (

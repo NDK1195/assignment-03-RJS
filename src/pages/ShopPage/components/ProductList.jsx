@@ -5,7 +5,7 @@ import SearchInput from "./SearchInput";
 import SortSelect from "./SortSelect";
 
 function ProductList() {
-  const productList = JSON.parse(localStorage.getItem("productList"));
+  const productList = useSelector((state) => state.productList.productList);
   const selectedCategory = useSelector((state) => state.searchAndSort.category);
   const searchText = useSelector((state) => state.searchAndSort.searchText);
   const sortValue = useSelector((state) => state.searchAndSort.sortValue);

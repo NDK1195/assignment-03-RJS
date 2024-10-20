@@ -61,6 +61,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "*",
+    element: <Error />,
+  },
 ]);
 function App() {
   return <RouterProvider router={router} />;

@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authenticationSlice from "./authenticationSlice";
 import cartSlice from "./cartSlice";
 import checkoutSlice from "./checkoutSlice";
-import popupSlice from "src/store/popupSlice";
+import popupSlice from "/src/store/popupSlice";
 import searchAndSortSlice from "./searchAndSortSlice";
 
 export const store = configureStore({

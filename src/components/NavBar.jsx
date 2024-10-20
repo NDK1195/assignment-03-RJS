@@ -7,13 +7,14 @@ function NavBar() {
   const cart = useSelector((state) => state.cart.cart);
 
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
+  const currentUserCart = cart[currentLoginUser?.email];
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   let totalQuantity;
-  if (currentLoginUser && cart[currentLoginUser.email]) {
-    totalQuantity = cart[currentLoginUser.email].reduce(
+  if (currentLoginUser && currentUserCart) {
+    totalQuantity = currentUserCart.reduce(
       (total, item) => total + item.quantity,
       0,
     );
@@ -59,7 +60,7 @@ function NavBar() {
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {/* cart quantity */}
-                {cart[currentLoginUser.email] && (
+                {currentUserCart && (
                   <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                     {totalQuantity}
                   </span>

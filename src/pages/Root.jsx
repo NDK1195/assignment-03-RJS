@@ -19,12 +19,6 @@ function Root() {
     }
 
     dispatch(setProductList(data));
-
-    const userArr = JSON.parse(localStorage.getItem("userArr"));
-    // Set user array to local storage if it doesn't exist
-    if (!userArr) {
-      localStorage.setItem("userArr", JSON.stringify([]));
-    }
   }, []);
 
   return (

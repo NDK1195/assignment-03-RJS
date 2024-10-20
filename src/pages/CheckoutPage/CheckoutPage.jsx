@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Banner from "../../components/Banner";
 import Wrapper from "../CartPage/components/Wrapper";
 import CheckoutForm from "./components/CheckoutForm";
@@ -9,7 +9,6 @@ function CheckoutPage() {
   const cart = useSelector((state) => state.cart.cart);
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
   const isCheckout = useSelector((state) => state.checkout.isCheckout);
-  const dispatch = useDispatch();
 
   const totalPrice =
     cart[currentLoginUser.email] &&

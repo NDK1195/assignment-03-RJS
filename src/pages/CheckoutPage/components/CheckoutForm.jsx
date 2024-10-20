@@ -2,6 +2,7 @@ import { useRef } from "react";
 import Button from "../../../components/Button";
 import { useDispatch } from "react-redux";
 import { setCheckoutInfo, setIsCheckout } from "../../../store/checkoutSlice";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutForm() {
   const fullNameRef = useRef();
@@ -9,6 +10,7 @@ function CheckoutForm() {
   const phoneRef = useRef();
   const addressRef = useRef();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function handlePlaceOrder(e) {
     e.preventDefault();

@@ -6,7 +6,9 @@ import Wrapper from "./components/Wrapper";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 function RegisterPage() {
-  const userArr = JSON.parse(localStorage.getItem("userArr"));
+  const userArr = localStorage.getItem("userArr")
+    ? JSON.parse(localStorage.getItem("userArr"))
+    : [];
 
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({
@@ -161,8 +163,6 @@ function RegisterPage() {
 
     // If all the form errors are empty, it means the form is valid
     if (Object.values(formErrors).every((value) => value === "")) {
-      const userArr = JSON.parse(localStorage.getItem("userArr"));
-
       // Add the new user to the existing array of users
       localStorage.setItem("userArr", JSON.stringify([...userArr, user]));
       navigate("/login");

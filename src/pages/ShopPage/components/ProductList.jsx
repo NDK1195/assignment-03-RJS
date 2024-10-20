@@ -1,21 +1,23 @@
 import { useSelector } from "react-redux";
 import Product from "../../../components/Product";
-import SortSelect from "./SortSelect";
-import SearchInput from "./SearchInput";
 import Pagination from "./Pagination";
+import SearchInput from "./SearchInput";
+import SortSelect from "./SortSelect";
 
 function ProductList() {
-  const productList = useSelector((state) => state.productList.productList);
+  const productList = JSON.parse(localStorage.getItem("productList"));
   const selectedCategory = useSelector((state) => state.searchAndSort.category);
   const searchText = useSelector((state) => state.searchAndSort.searchText);
   const sortValue = useSelector((state) => state.searchAndSort.sortValue);
 
+  // filter products based on category and search input
   const filteredProducts = productList.filter(
     (product) =>
       (selectedCategory === "all" || product.category === selectedCategory) &&
       product.name.toLowerCase().includes(searchText.toLowerCase()),
   );
 
+  // sort products based on sort value
   const sortedProducts = [...filteredProducts].sort((a, b) => {
     if (sortValue === "ascending") {
       return Number(a.price) - Number(b.price);
@@ -25,6 +27,7 @@ function ProductList() {
     return 0;
   });
 
+  // display products based on sorted products
   const productsToDisplay = (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {sortedProducts.map((product) => (

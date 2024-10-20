@@ -10,6 +10,7 @@ function AddToCart({ product, quantity }) {
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
 
   function handleAddToCart() {
+    // if user is not logged in, redirect to login page
     if (!currentLoginUser) {
       navigate("/login");
       return;

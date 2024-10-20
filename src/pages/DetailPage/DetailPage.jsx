@@ -4,16 +4,17 @@ import Description from "./components/Description";
 import ProductImages from "./components/ProductImages";
 import ProductInfo from "./components/ProductInfo";
 import RelatedProducts from "./components/RelatedProducts";
-import { useSelector } from "react-redux";
 
 function DetailPage() {
   const { productId } = useParams();
-  const productList = useSelector((state) => state.productList.productList);
+  const productList = JSON.parse(localStorage.getItem("productList"));
 
+  // Find product by id get through params
   const product = productList.find(
     (product) => product["_id"]["$oid"] === productId,
   );
 
+  // Find related products by category
   const relatedProducts = productList.filter(
     (item) =>
       item.category === product.category && item["_id"]["$oid"] !== productId,

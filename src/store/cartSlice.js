@@ -24,14 +24,16 @@ const cartSlice = createSlice({
         (item) => item["_id"]["$oid"] === product["_id"]["$oid"],
       );
 
+      // if item exists, increase quantity, if not add quantity property
       if (itemIndex >= 0) {
         state.cart[userEmail][itemIndex].quantity += quantity;
       } else {
         state.cart[userEmail].push({ ...product, quantity });
       }
-
+      // update cart to local storage
       localStorage.setItem("cartList", JSON.stringify(state.cart));
     },
+
     INCREASE_QUANTITY: (state, action) => {
       const { userEmail, productId } = action.payload;
 
@@ -39,7 +41,9 @@ const cartSlice = createSlice({
         (item) => item["_id"]["$oid"] === productId,
       );
 
-      state.cart[userEmail][itemIndex].quantity += 1;
+      if (itemIndex >= 0) {
+        state.cart[userEmail][itemIndex].quantity += 1;
+      }
 
       localStorage.setItem("cartList", JSON.stringify(state.cart));
     },

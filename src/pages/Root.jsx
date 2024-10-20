@@ -4,7 +4,6 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { ON_LOGIN } from "../store/authenticationSlice";
-import { setProductList } from "../store/productListSlice";
 import Chat from "./Chat/Chat";
 
 function Root() {
@@ -17,9 +16,12 @@ function Root() {
     if (currentLoginUser) {
       dispatch(ON_LOGIN());
     }
-
-    dispatch(setProductList(data));
   }, []);
+
+  // Save product list to local storage whenever it changes
+  useEffect(() => {
+    localStorage.setItem("productList", JSON.stringify(data));
+  }, [data]);
 
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">

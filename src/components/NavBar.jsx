@@ -5,12 +5,11 @@ import { ON_LOGOUT } from "../store/authenticationSlice";
 function NavBar() {
   const isLogin = useSelector((state) => state.authentication.isLogin);
   const cart = useSelector((state) => state.cart.cart);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
   const currentUserCart = cart[currentLoginUser?.email];
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   let totalQuantity;
   if (currentLoginUser && currentUserCart) {

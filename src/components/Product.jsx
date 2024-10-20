@@ -9,6 +9,7 @@ function Product({ product, isHavePopup = false }) {
   // format price
   const price = new Intl.NumberFormat("vi-VN").format(product.price);
 
+  // if product is not from homepage, can click to navigate to detail page
   let navigateTo = "";
   if (!isHavePopup) {
     navigateTo = `/detail/${product["_id"]["$oid"]}`;

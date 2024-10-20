@@ -91,6 +91,7 @@ function LoginPage() {
         user.password === currentUser.password,
     );
 
+    // check if user exist, set current user and redirect to home
     if (foundUser) {
       localStorage.setItem("currentLoginUser", JSON.stringify(foundUser));
       dispatch(ON_LOGIN());

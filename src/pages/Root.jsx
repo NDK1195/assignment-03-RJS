@@ -10,16 +10,15 @@ function Root() {
   const data = useLoaderData();
   const dispatch = useDispatch();
 
+  // save data to local storage
+  localStorage.setItem("productList", JSON.stringify(data));
+
   const currentLoginUser = JSON.parse(localStorage.getItem("currentLoginUser"));
 
   useEffect(() => {
     if (currentLoginUser) {
       dispatch(ON_LOGIN());
     }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("productList", JSON.stringify(data));
   }, []);
 
   return (

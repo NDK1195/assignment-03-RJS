@@ -18,10 +18,9 @@ function Root() {
     }
   }, []);
 
-  // Save product list to local storage whenever it changes
   useEffect(() => {
     localStorage.setItem("productList", JSON.stringify(data));
-  }, [data]);
+  }, []);
 
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">

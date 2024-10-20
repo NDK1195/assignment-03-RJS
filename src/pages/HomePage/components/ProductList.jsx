@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Product from "../../../components/Product";
 import { SHOW_POPUP } from "../../../store/popupSlice";
 

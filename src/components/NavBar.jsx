@@ -59,9 +59,9 @@ function NavBar() {
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 {/* cart quantity */}
-                {currentUserCart && (
+                {isLogin && (
                   <span className="absolute -left-2 -top-1 flex size-4 items-center justify-center rounded-full bg-red-500 text-xs text-white">
-                    {totalQuantity}
+                    {totalQuantity ? totalQuantity : 0}
                   </span>
                 )}
                 {/* cart quantity */}
